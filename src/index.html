@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="parent">
+        <p>
+            <button></button>
+        </p>
+
+        <p>
+            <a href="">
+                <img src="" alt="">
+            </a>
+        </p>
+
+        <div>
+            <p></p>
+            <div>
+                <p>
+                    <button></button>
+                </p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function flattenDOMTree(root) {
+        if (!root) return [];
+
+        let queue = [root];
+        let result = [];
+            while (queue.length > 0) {
+                let node = queue.shift();
+                result.push(node);
+                
+                for (let child of node.children) {
+                    queue.push(child);
+                }
+            }
+            return result;
+        }
+    
+    // Example Usage:
+
+    const parent = document.querySelector(".parent")
+
+    document.addEventListener("DOMContentLoaded", () => {
+        let flattenedTree = flattenDOMTree(parent);
+        console.log(flattenedTree);
+    });
+    </script>
+</body>
+</html>
